@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">RTA VTC</string>
+    <string name="title">ระบบประชุมทางไกล</string>
+    <string name="subtitle">กองทัพบก</string>
+    <string name="hint_room_name">ใส่ชื่อห้องประชุม</string>
+    <string name="btn_join">เข้าร่วมประชุม</string>
+    <string name="warning">This meeting is conducted over the internet.\nDiscussion of classified or sensitive information is strictly prohibited.</string>
+    <string name="version_info">version ทดลองใช้งาน 3/7/2026 :wiwat_kh@rta.mi.th</string>
+</resources>
