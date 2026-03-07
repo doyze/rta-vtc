@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                         .setServerURL(serverURL)
                         .setConfigOverride("legalUrls.privacy", "https://doyze.github.io/rta-vtc/privacy.html")
                         .setConfigOverride("legalUrls.helpCentre", "https://doyze.github.io/rta-vtc/help.html")
+                        .setConfigOverride("legalUrls.terms", "https://doyze.github.io/rta-vtc/terms.html")
                         .build();
         JitsiMeet.setDefaultConferenceOptions(defaultOptions);
 
