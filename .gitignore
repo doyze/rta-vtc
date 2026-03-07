@@ -11,5 +11,6 @@
 *.aab
 *.jks
 *.keystore
-rta_logo.png
 rta_logo.svg
+# Allow logo in docs for GitHub Pages
+!docs/rta_logo.png
