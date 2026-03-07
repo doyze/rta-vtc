@@ -62,5 +62,24 @@
 -keep public class com.horcrux.svg.** {*;}
 -keep class com.facebook.hermes.unicode.** { *; }
 
+# Giphy
+-dontwarn com.giphy.sdk.**
+-keep class com.giphy.sdk.** { *; }
+
+# Kotlin Parcelize
+-dontwarn kotlinx.parcelize.**
+-keep class kotlinx.parcelize.** { *; }
+
+# Missing classes workaround
+-dontwarn com.giphy.sdk.analytics.models.AnalyticsEvent
+-dontwarn kotlinx.parcelize.Parcelize
+
+# Gson
+-keepattributes Signature
+-keep class com.google.gson.** { *; }
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+
 # This app
 -keep class com.rta.vtc.** { *; }

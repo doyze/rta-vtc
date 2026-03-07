@@ -5,5 +5,38 @@
     <string name="hint_room_name">ใส่ชื่อห้องประชุม</string>
     <string name="btn_join">เข้าร่วมประชุม</string>
     <string name="warning">This meeting is conducted over the internet.\nDiscussion of classified or sensitive information is strictly prohibited.</string>
-    <string name="version_info">version ทดลองใช้งาน 3/7/2026 :wiwat_kh@rta.mi.th</string>
+    <string name="version_info">version 2.0.0 :wiwat_kh@rta.mi.th</string>
+    <string name="version_info_v2">RTA VTC v2.0.0 - wiwat_kh@rta.mi.th</string>
+
+    <!-- Settings -->
+    <string name="settings_title">ตั้งค่า</string>
+    <string name="settings_display_name">ชื่อที่แสดง</string>
+    <string name="settings_name_hint">ใส่ชื่อ-นามสกุล</string>
+    <string name="settings_defaults">ค่าเริ่มต้นเข้าห้องประชุม</string>
+    <string name="settings_start_muted">ปิดไมค์เมื่อเข้าห้อง</string>
+    <string name="settings_start_camera_off">ปิดกล้องเมื่อเข้าห้อง</string>
+    <string name="settings_save">บันทึก</string>
+    <string name="settings_saved">บันทึกแล้ว</string>
+    <string name="settings_clear_history">ล้างประวัติห้องประชุม</string>
+    <string name="history_cleared">ล้างประวัติแล้ว</string>
+
+    <!-- Pre-join -->
+    <string name="prejoin_title">ตั้งค่าก่อนเข้าห้อง</string>
+    <string name="prejoin_mic_on">เปิดไมค์</string>
+    <string name="prejoin_camera_on">เปิดกล้อง</string>
+    <string name="prejoin_audio_only">เสียงอย่างเดียว (ไม่มีวิดีโอ)</string>
+    <string name="prejoin_join">เข้าร่วม</string>
+    <string name="prejoin_cancel">ยกเลิก</string>
+
+    <!-- History -->
+    <string name="history_title">ประวัติห้องประชุม</string>
+    <string name="history_empty">ยังไม่มีประวัติ</string>
+    <string name="history_icon">ประวัติ</string>
+
+    <!-- Events -->
+    <string name="event_joined">เข้าห้องประชุมแล้ว</string>
+    <string name="event_terminated">ออกจากห้องประชุมแล้ว</string>
+
+    <!-- Errors -->
+    <string name="error_empty_room">กรุณาใส่ชื่อห้องประชุม</string>
 </resources>

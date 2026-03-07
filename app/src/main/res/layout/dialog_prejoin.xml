@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/prejoin_title"
+        android:textColor="@color/textDark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchMic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/prejoin_mic_on"
+        android:checked="true"
+        android:layout_marginBottom="8dp" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchCamera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/prejoin_camera_on"
+        android:checked="true"
+        android:layout_marginBottom="8dp" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchAudioOnly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/prejoin_audio_only"
+        android:checked="false"
+        android:layout_marginBottom="16dp" />
+
+</LinearLayout>
