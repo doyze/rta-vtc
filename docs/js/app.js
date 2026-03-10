@@ -227,19 +227,39 @@ function endConference() {
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    showInstallBanner();
+    updateInstallBanner();
 });
 
+window.addEventListener('appinstalled', () => {
+    deferredPrompt = null;
+    const banner = document.querySelector('.install-banner');
+    if (banner) banner.remove();
+    showToast('ติดตั้งแล้ว');
+});
+
+function isStandalone() {
+    return window.matchMedia('(display-mode: standalone)').matches
+        || window.navigator.standalone === true;
+}
+
 function showInstallBanner() {
-    // Don't show if already installed or banner exists
+    // Don't show if already installed as PWA
+    if (isStandalone()) return;
     if (document.querySelector('.install-banner')) return;
 
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
     const banner = document.createElement('div');
     banner.className = 'install-banner';
     banner.innerHTML = `
         <span class="material-icons">install_mobile</span>
-        <span class="install-banner-text">ติดตั้ง RTA VTC บนหน้าจอหลัก</span>
-        <button id="btnInstall">ติดตั้ง</button>
+        <div class="install-banner-text">
+            <strong>ติดตั้ง RTA VTC</strong><br>
+            <small id="installHint">${isIOS
+                ? 'กด <span class="material-icons" style="font-size:14px;vertical-align:middle">ios_share</span> แล้วเลือก "Add to Home Screen"'
+                : 'เพิ่มแอปบนหน้าจอหลัก'
+            }</small>
+        </div>
+        <button id="btnInstall">${deferredPrompt ? 'ติดตั้ง' : (isIOS ? 'วิธีทำ' : 'ติดตั้ง')}</button>
     `;
     els.pageMain.insertBefore(banner, els.pageMain.firstChild);
 
@@ -252,8 +272,22 @@ function showInstallBanner() {
             }
             deferredPrompt = null;
             banner.remove();
+        } else if (isIOS) {
+            showToast('กด Share แล้วเลือก "Add to Home Screen"');
+        } else {
+            // Chrome: use menu > Install app
+            showToast('กดเมนู ⋮ แล้วเลือก "ติดตั้งแอป"');
         }
     });
+}
+
+function updateInstallBanner() {
+    const btn = document.getElementById('btnInstall');
+    if (btn) {
+        btn.textContent = 'ติดตั้ง';
+    } else {
+        showInstallBanner();
+    }
 }
 
 // --- Event Listeners ---
@@ -308,6 +342,7 @@ els.prejoinAudioOnly.addEventListener('change', () => {
 
 // --- Init ---
 renderHistory();
+showInstallBanner();
 
 // Register Service Worker
 if ('serviceWorker' in navigator) {

@@ -1,8 +1,10 @@
 {
+    "id": "/rta-vtc/",
     "name": "RTA VTC - ระบบประชุมทางไกล กองทัพบก",
     "short_name": "RTA VTC",
     "description": "ระบบประชุมทางไกล กองทัพบก (Royal Thai Army Video Teleconference)",
-    "start_url": "./",
+    "start_url": ".",
+    "scope": ".",
     "display": "standalone",
     "orientation": "any",
     "theme_color": "#2E7D32",
@@ -12,13 +14,25 @@
             "src": "icons/icon-192.png",
             "sizes": "192x192",
             "type": "image/png",
-            "purpose": "any maskable"
+            "purpose": "any"
         },
         {
             "src": "icons/icon-512.png",
             "sizes": "512x512",
             "type": "image/png",
-            "purpose": "any maskable"
+            "purpose": "any"
+        },
+        {
+            "src": "icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
         }
     ]
 }
