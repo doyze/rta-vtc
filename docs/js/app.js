@@ -9,7 +9,7 @@ const STORAGE_KEYS = {
 const MAX_HISTORY = 20;
 
 let jitsiApi = null;
-let deferredPrompt = null;
+let deferredPrompt = window.__pwaInstallPrompt || null;
 
 // --- DOM Elements ---
 const $ = id => document.getElementById(id);
