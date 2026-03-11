@@ -1,0 +1,87 @@
+name: Build iOS
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'rta_vtc_flutter/**'
+      - '.github/workflows/build-ios.yml'
+  workflow_dispatch:
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: rta_vtc_flutter
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze code
+        run: flutter analyze
+
+      - name: Setup CocoaPods cache
+        uses: actions/cache@v4
+        with:
+          path: rta_vtc_flutter/ios/Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('rta_vtc_flutter/ios/Podfile.lock') }}
+          restore-keys: ${{ runner.os }}-pods-
+
+      - name: Install CocoaPods
+        run: cd ios && pod install
+
+      - name: Build iOS (no codesign)
+        run: flutter build ios --release --no-codesign
+
+      - name: Upload iOS build
+        uses: actions/upload-artifact@v4
+        with:
+          name: rta-vtc-ios-build
+          path: rta_vtc_flutter/build/ios/iphoneos/Runner.app
+          retention-days: 30
+
+  build-android:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: rta_vtc_flutter
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: rta-vtc-android-apk
+          path: rta_vtc_flutter/build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 30
